@@ -5,10 +5,12 @@ const GhostButton = ({
   href = "#",
   large = false,
   className = "",
+  handler = () => {},
 }) => {
   return (
     <a
       href={href}
+      onClick={() => handler()}
       className={`inline-flex items-center gap-2 border border-[#2A2A2A] text-[#888]
         font-[Syne,sans-serif] font-semibold rounded-xl cursor-pointer no-underline
         hover:text-[#F0EBE0] hover:border-[#555] transition-all duration-200

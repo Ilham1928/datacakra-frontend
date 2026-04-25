@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import GhostButton from "./GhostButton";
 import AccentButton from "./AccentButton";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ setMobileOpen }) => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn, { passive: true });
@@ -39,10 +42,14 @@ const Navbar = ({ setMobileOpen }) => {
       </div>
 
       <div className="flex items-center gap-2.5">
-        <GhostButton href="#" className="hidden md:inline-flex">
+        <GhostButton
+          href="/login"
+          className="hidden md:inline-flex"
+          handler={() => navigate("/login")}
+        >
           Masuk
         </GhostButton>
-        <AccentButton href="#">Mulai Gratis →</AccentButton>
+        <AccentButton href="/register">Mulai Gratis →</AccentButton>
         <button
           onClick={() => setMobileOpen((o) => !o)}
           className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px]
